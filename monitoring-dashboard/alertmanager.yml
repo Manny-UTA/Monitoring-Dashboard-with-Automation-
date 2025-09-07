@@ -1,5 +1,5 @@
 global:
-  resolve_timeout: 1m
+  resolve_timeout: 5m
 
 route:
   receiver: 'slack-notifications'
@@ -13,4 +13,4 @@ receivers:
         title: '{{ .CommonAnnotations.summary }}'
         text: '{{ .CommonAnnotations.description }}'
         color: '{{ if eq .Status "firing" }}danger{{ else }}good{{ end }}'
-        webhook_url: 'https://hooks.slack.com/services/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'
+        api_url: 'https://hooks.slack.com/services/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'
