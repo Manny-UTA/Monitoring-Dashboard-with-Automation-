@@ -1,0 +1,11 @@
+groups:
+  - name: example-alert
+    rules:
+      - alert: HighRequestRate
+        expr: rate(my_app_requests_total[30s]) > 0.1
+        for: 10s
+        labels:
+          severity: warning
+        annotations:
+          summary: High request rate detected
+          description: More than 0.1 request/sec in the last 30s

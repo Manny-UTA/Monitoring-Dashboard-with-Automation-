@@ -1,0 +1,16 @@
+global:
+  resolve_timeout: 1m
+
+route:
+  receiver: 'slack-notifications'
+
+receivers:
+  - name: 'slack-notifications'
+    slack_configs:
+      - send_resolved: true
+        username: 'Prometheus'
+        channel: '#alerts'
+        title: '{{ .CommonAnnotations.summary }}'
+        text: '{{ .CommonAnnotations.description }}'
+        color: '{{ if eq .Status "firing" }}danger{{ else }}good{{ end }}'
+        webhook_url: 'https://hooks.slack.com/services/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'
